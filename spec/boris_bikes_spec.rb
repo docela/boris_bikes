@@ -10,7 +10,9 @@ describe DockingStation do
 
   it 'docks bike' do
     bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
+    docking_station = DockingStation.new
+    docking_station.dock(bike)
+    expect(docking_station.bikes).to eq [bike]
   end
 
   it 'returns an error when there is no bike docked' do
@@ -23,6 +25,6 @@ describe DockingStation do
     bike = Bike.new
     docking_station.dock(bike)
     bike2 = Bike.new
-    expect {docking_station.dock(bike2)}.to raise_error(RuntimeError)
+    expect { 21.times { docking_station.dock Bike.new} }.to raise_error(RuntimeError)
   end
 end
