@@ -4,7 +4,11 @@ class DockingStation
   attr_reader :bike
 
   def release_bike
-    Bike.new
+    if @bike == nil
+      raise RuntimeError, "No Bikes Detected"
+    else
+      Bike.new
+    end
   end
 
   def dock(bike)
