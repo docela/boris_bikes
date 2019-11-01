@@ -17,4 +17,12 @@ describe DockingStation do
     docking_station = DockingStation.new
     expect {docking_station.release_bike}.to raise_error(RuntimeError)
   end 
+
+  it 'returns an error when docking station capacity full' do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    docking_station.dock(bike)
+    bike2 = Bike.new
+    expect {docking_station.dock(bike2)}.to raise_error(RuntimeError)
+  end
 end
