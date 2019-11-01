@@ -12,4 +12,9 @@ describe DockingStation do
     bike = Bike.new
     expect(subject.dock(bike)).to eq bike
   end
+
+  it 'returns an error when there is no bike docked' do
+    docking_station = DockingStation.new
+    expect(docking_station.release_bike).to raise_error(RuntimeError)
+  end 
 end
